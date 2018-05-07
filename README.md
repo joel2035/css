@@ -65,6 +65,9 @@ Ils sont essentiellement utilisés pour ajouter des ornements , des décorations
 
 </section>
 ```
+
+
+
 ```CSS
 .cover{
   background: #FDFDFD;
@@ -103,6 +106,9 @@ position:absolute;
 
   }
 }
+
+
+
 ```
 ## REM, EM, %, VW Sizing
 ### %
@@ -259,6 +265,7 @@ div {
 	-webkit-filter: blur(0);
 	filter: blur(0);
 }
+
 
 /* noir et blanc puis couleur au hover*/
 .grayscale div img {
@@ -425,4 +432,414 @@ background: #184a7d;
 		opacity: 0;
 	}
 }
+```
+## flexboxgrid
+
+col-xs-(nombre de colonnes) : Mobile
+
+col-md-(nombre de colonnes) : Tablette
+
+col-lg-(nombre de colonnes) : Desktop
+
+ALIGNEMENTS
+
+.start- : à gauche
+
+.center- : au millieu
+
+.end- : à droite
+
+(Plus ou moins)
+## L'UTILISATIONS DES GRILLE FLEXBOX
+
+# Sensible
+Les modificateurs réactifs permettent de spécifier différentes tailles de colonnes, décalages, alignement et distribution aux largeurs de la fenêtre xs, sm, md & lg.
+```html
+<div class="row">
+    <div class="col-xs-12
+                col-sm-8
+                col-md-6
+                col-lg-4">
+        <div class="box">Responsive</div>
+    </div>
+</div>
+```
+#POUR QU'IL SOIT FLUIDE
+```CSS
+.col-xs-6 {
+  flex-basis: 50%;
+}
+```
+# Pour décaler les colone
+```HTML
+<div class="row">
+    <div class="col-xs-offset-3 col-xs-9">
+        <div class="box">offset</div>
+    </div>
+</div>
+```
+# Pour des largeurs automatiques
+```HTML
+Ajoutez n'importe quel nombre de colonnes de dimensionnement automatique à une ligne. Laissez la grille le découvrir.
+
+
+<div class="row">
+    <div class="col-xs">
+        <div class="box">auto</div>
+    </div>
+</div>
+```
+
+# Grilles imbriquées
+```html
+Les grilles Nest à l'intérieur des grilles à l'intérieur des grilles.
+<div class="row">
+    <div class="col-xs">
+        <div class="box">
+            <div class="row">
+                <div class="col-xs">
+                    <div class="box">auto</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+pour autre chose allez sur http://flexboxgrid.com/
+```
+
+### JavaScript mémo
+
+Le HTML
+
+```html
+
+<section id="sectionId" class="firstSection">
+   <h2 class="firstSection_title">Le titre</h2>
+   <img class="firstSection_Img" src="" alt="">
+   <div class="firstSection_container">
+      <p class="firstSection_containerText">Coucou</p>
+      <p class="firstSection_containerText">Toi</p>
+   </div>
+
+   <button data-number="1" type="button" name="button">Bouyah</button>
+   <button data-number="2" type="button" name="button">Hola</button>
+   <button data-number="3" type="button" name="button">Hey</button>
+   <article class="firstSection_article">
+      <img src="" alt="">
+   </article>
+</section>
+```
+
+## 1\. Sélecteur
+
+### querySelector
+
+Pour sélectionner une balise, on peut utiliser le querySelector en visant le nom de la balise, l'id ou la classe.
+
+Pour mettre la section dans la variable theFirstSection, on peut utiliser :
+
+```javascript
+// avec le nom de balise
+var theFirstSection=document.querySelector('section');
+
+// avec la classe
+var theFirstSection=document.querySelector('.firstSection');
+
+// avec l'id
+var theFirstSection=document.querySelector('#sectionId');
+
+// la balise et la classe
+var theFirstSection=document.querySelector('section.firstSection');
+
+// pour sélectionner la balise img dans le .firstSection_article
+var myImg=document.querySelector('.firstSection_article img');
+
+// avec le dataset
+var bouton=document.querySelector('[data-number="2"]')
+```
+
+**IMPORTANT!**
+
+Le **querySelector** renvoie le **premier** élément qu'il trouve dans le HTML.
+
+```javascript
+var bouton=document.querySelector('button');
+```
+
+ça renvoie le **PREMIER BUTTON**
+
+--------------------------------------------------------------------------------
+
+### querySelectorAll
+
+Pour sélectionner plusieurs éléments, on utilise querySelectorAll qui renvoie un **TABLEAU**
+
+```javascript
+var boutons=document.querySelectorAll('button')
+```
+
+La variable **boutons** est un **TABLEAU**. Les éléments du tableau sont utilisables avec boutons[0], boutons[1], ...
+
+--------------------------------------------------------------------------------
+
+## 2\. Quelques fonctions utiles
+
+_Valeur/contenu_:
+
+```javascript
+element.innerHTML //renvoie le contenu d'une element
+element.textContent //renvoie le texte d'une element
+input.value //renvoie le contenu d'un input
+checkbox.checked // renvoie true si la checkbox est cochée, sinon false
+```
+
+_Styles_:
+
+```javascript
+element.style.color='red'; // change le style couleur d'un element en 'red'
+element.style.backgroundColor='blue'; //change le style background-color d'un element
+element.style.transform='translateX(10px)';
+element.style.src='img/imgopif.jpg';
+element.style.display='none';
+...
+```
+
+_Classes_:
+
+```javascript
+element.classList //renvoie la liste des classe d'un element
+element.classList.add('nomdeclasse'); //ajoute la classe "nomdeclasse" à un élément
+element.classList.remove('nomdeclasse'); //supprime la classe "nomdeclasse" à un élément
+element.classList.toggle('nomdeclasse'); //ajoute la classe "nomdelaclasse" si elle est absente, supprime la classe si elle est présente
+element.dataset.exemple="ex"; //Donne la valeur "ex" au "data-exemple" de la balise
+```
+
+_Tableaux_:
+
+```javascript
+var tableau=[]; // déclare un tableau
+tableau.length // renvoie la taille du tableau
+tableau.length-1 // indice du dernier élément du tableau
+tableau.push(element); // place un "element" à la fin du "tableau"
+tableau.splice(2, 3); //supprime 2 elements à partir de l'index 3 du tableau
+```
+
+Trucs:
+
+```javascript
+window.pageYOffset; //renvoie la valeur du scroll actuel de la page
+```
+
+### - Créer un élément:
+
+```javascript
+var newSpan=document.createElement('SPAN'); //Crée un élément <span></span>
+newSpan.className="exempleClass" // donne la classe "exempleClass" à l'élément span
+var newText=document.createTextNode('exemple'); //Crée un texte "exemple"
+newSpan.appendChild(newText); //place le texte "exemple" dans l'élément span
+
+var article=document.querySelector('.firstSection_article');
+article.appendChild(newSpan); //place l'élément span dans l'aticle dans le HTML
+```
+
+### - Evenement par défaut
+
+Pour empecher un evenement par défaut
+
+```javascript
+// empeche les evenement par defaut (le submit du formulaire par ex)
+form.addEventListener('submit', function(event) {
+      event.preventDefault();
+});
+```
+
+## 3\. addEventListener
+
+Pour mettre de l'intéraction, on peut placer un addEventListener sur un élément pour qu'il exécute une fonction (**function**).
+
+```javascript
+var bouton=document.querySelector('button')
+
+var bouton.addEventListener('click', function(){
+   console.log('coucou')
+})
+```
+
+Lorsqu'on **clique** `'click'` sur le **premier bouton**, on affiche "coucou" dans la console.
+
+### Des trucs :
+
+```javascript
+var window.addEventListener('keyup', function(event){
+   console.log(event.which);  //renvoie le keycode de la touche du clavier qu'on relache
+})
+```
+
+## 4\. Timeout, Interval
+
+```javascript
+//Affiche 'coucou' dans la console après 1000ms (1s)
+var timoute = setTimeout(function () {
+   console.log('coucou');  
+}, 1000);
+
+clearTimeout(timoute); //supprime le setTimeout
+```
+
+```javascript
+//Affiche 'bouh' dans la console toute les 2000ms (2s)
+var intervalle = setInterval(function () {
+   console.log('bouh');  
+}, 2000);
+
+clearInterval(intervalle); //supprime le setInterval
+
+```
+###
+
+
+
+
+
+
+### Parcel  
+
+Pour démarrer :
+
+Dans le terminale :
+
+git clone le repo puis npm install dans parcel
+
+npm start
+
+À vous de jouer !
+
+## Installation dépendances pour framework JS (React, Preact et VUE)
+
+## React
+
+/* Ajoutez un script de démarrage à package.json
+
+package.json
+"scripts": {
+  "start": "parcel index.html"
+}
+
+npm install --save react
+npm install --save react-dom
+npm install --save-dev parcel-bundler
+
+## Preact
+
+npm install --save preact
+npm install --save preact-compat
+npm install --save-dev parcel-bundler
+npm install --save-dev babel-preset-env
+npm install --save-dev babel-preset-preact
+
+# Ensuite, assurez-vous que la configuration Babel suivante est présente.
+
+ .babelrc
+{
+  "presets": ["env", "preact"]
+}
+# Ajoutez un script de démarrage à package.json
+
+// package.json
+"scripts": {
+  "start": "parcel index.html"
+}
+
+# Ajoutez un script de démarrage à package.json
+
+ package.json
+"scripts": {
+  "start": "parcel index.html"
+}
+
+## VUE
+
+npm install --save vue
+npm install --save-dev parcel-bundler
+
+
+/* Ajoutez un script de démarrage à package.json
+
+ package.json
+"scripts": {
+  "start": "parcel index.html"
+}
+
+
+
+### Définition :
+
+Convention : façon de faire du css avec des "règles" et des normes à suivre (nom des classes etc...)
+
+
+
+``` javascript
+document.body.insertBefore : pour déplacer un element avec le js
+ex: const titre = document.getElementById("titre")
+     const texte = document.body.getElementsByTagName("p")
+
+     document.body.insertBefore(texte[1], titre)
+     console.log(titre);
+
+pour ajouter un elément a la fin : document.body.appendChild(?)
+pour supprimé un elément : document.removeChild(?)
+
+pour remplacer un elément : document.body.replaceChild(nouveauTexte, texte[1])
+
+our genera du texte HTML en JS : function ajouterTexte(pseudo, monTexte) {
+
+   const nouveauTexte = document.createElement('p')
+
+   nouveauTexte.innerHTML = `<strong>${pseudo}:${monTexte}`;
+   document.body.appendChild(nouveauTexte)
+ }
+
+ ajouterTexte("Antho " , " joeme")
+document.body.getElementsByTagName(pour récuperé un element du dom )
+
+
+POUR GENERER DU TEXTE EN JS
+
+function ajouterTexte(monTexte) {
+  const nouveauTexte = document.createElement("p")
+  nouveauTexte.innerHTML = `<strong> ${monTexte}`;
+
+  document.body.appendChild(nouveauTexte)
+
+}
+ajouterTexte("Lorem ipsum dolor sit amet");
+
+
+pour récupéré et afficher un lien
+const lien = document.getElementsByTagName("a")[0]
+console.log(lien.getAttribute('href'));
+
+pour modifier un lien : lien.setAttribute("href", "http://anthonywelc.com")
+
+pour modifier un texte : const texteArray = Array.from(texte)
+texteArray.map(paragraphe => paragraphe.innerHTML = "Hahahaha je t'est hacké")
+
+pour un lien :const lien = document.body.getElementsByTagName("a")[0]
+lien.setAttribute('href', "http://anthonywelc.com")
+
+
+pour modifier un texte : const texteArray = Array.from(texte)
+texteArray.map(paragraphe => paragraphe.innerHTML = "hahaha je t'ai hacké!")
+
+
+* push(element1, …, elementN) ajoute des éléments en dernière position
+* unshift(element1, …, elementN) ajoute des éléments en première position
+* pop() supprime le dernier élément
+* shift() supprime le premier élément
+* sort() trie les éléments (par défaut dans lordre croissant)
+* indexOf(element) recherche la position dun élément
+* splice(start, deleteCount) supprime des éléments
+* reverse() inverse lordre des éléments, le premier devenant le dernier, et ainsi de suite
+* join() crée une chaîne de caractère en concaténant tous les éléments
+* concat(array1, …, arrayN) 
 ```
